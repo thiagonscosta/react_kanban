@@ -27,16 +27,6 @@ const customStyles = {
 };
 
 function Column(props) {
-    
-    const [modalIsOpen,setIsOpen] = useState(false);
-
-    function openModal() {
-      setIsOpen(true);
-    }
-
-    function closeModal() {
-      setIsOpen(false);
-    }
 
     return (
       <ColumnWrapper>
@@ -44,21 +34,6 @@ function Column(props) {
           <h3>{props.column.title}</h3>
           <span>{props.items.length}</span>
         </ColumnTitle>
-
-        <ButtonAddItem onClick={openModal}>
-          <MdControlPoint size={16} />
-          Add new item
-        </ButtonAddItem>
-
-        <Modal
-          isOpen={modalIsOpen}
-          contentLabel="Example Modal"
-          style={customStyles}
-        >
-          <CloseButton onClick={closeModal}>
-            <MdClear size={20} />
-          </CloseButton>
-        </Modal>
 
         <Droppable droppableId={props.column.id}>
           {(provided, snapshot) => (

@@ -1,8 +1,8 @@
-import {
-    createGlobalStyle
+import styled, {
+    createGlobalStyle,
 } from 'styled-components';
 
-export default createGlobalStyle `
+export default createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap');
 
     * {
@@ -18,9 +18,11 @@ export default createGlobalStyle `
 
     body {
         font: 14px 'Roboto', sans-serif;
-        background: #F4F7F9;
+        background: #F4F7F9; 
         color: #333;
         -webkit-font-smoothing: antialiased !important;
+        text-rendering: optimizeLegibility !important;
+        font-family: sans-serif;
     }
 
     ul {
@@ -28,3 +30,20 @@ export default createGlobalStyle `
     }
 
 `;
+
+// export const Container = styled.div`
+//     max-width: 1380px;
+//     margin-left: auto;
+//     margin-right: auto;
+//     padding-left: 15px;
+//     padding-right: 15px;
+
+//     &:before,
+//     &:after {
+//         content: " ";
+//         display: table;
+//     }
+//     &:after {
+//         clear: both
+//     }
+// `;

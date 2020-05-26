@@ -1,12 +1,18 @@
 import React from 'react';
 import Board from '../../components/board';
 import Header from '../../components/header';
+import SideMenu from '../../components/sideMenu';
+
+import { Container } from './styles';
 
 function BoardPage () {
     return (
         <>
             <Header />
-            <Board />
+            <Container>
+                <SideMenu />
+                <Board />
+            </Container>
         </>
     )
 }

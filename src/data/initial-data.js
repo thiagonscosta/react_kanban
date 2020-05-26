@@ -63,7 +63,7 @@ export const initialBoardData = {
         },
         'column-3': {
             id: 'column-3',
-            title: 'Review',
+            title: 'Stopped',
             itemsIds: []
         },
         'column-4': {

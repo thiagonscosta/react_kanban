@@ -28,28 +28,20 @@ export const BoardItem = styled.div`
   }
 
   p {
-    margin: 15px 0;
+    margin: 12px 0;
+    line-height: 1.7;
   }
-
-  
-  /* &:hover {
-    background-color: #f7fafc;
-  } */
-
-  /* & + & {
-    margin-top: 4px;
-  } */
 `
 
 export const Avatar = styled.div`
-    background: #F4F7F9;
-    padding: 4px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background: #F4F7F9;
+  padding: 4px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 `;
