@@ -1,6 +1,5 @@
 import React from 'react';
 import { Head } from './styles';
-
 import { NavLink } from 'react-router-dom';
 
 function Header() {

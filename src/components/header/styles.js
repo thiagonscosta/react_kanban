@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-export const Head = styled.header`
+export const Head = styled.div`
     background: #FFFFFF;
-    width: 100%;
     height: 60px;
     padding: 0 30px;
 
+    width: 100%;
     display: flex;
     align-items: center;
 

@@ -3,19 +3,17 @@ import {
     SideMenu,
     ButtonExpand,
     ArrowIcon,
-    Account
+    Account,
+    ExitIcon
 } from './styles';
 import avatar from '../../assets/avatar.jpg';
 
 function Menu () {
     const [expanded, setExpanded] = useState(true);
-    const [rotate, setRotate] = useState(true);
-
+    
     function expandedMenu() {
         let xd = !expanded; 
-        let rt = !rotate;
         setExpanded(xd);
-        setRotate(true);
     }
 
     return (
@@ -23,8 +21,12 @@ function Menu () {
             <ButtonExpand onClick={expandedMenu} >
                 <ArrowIcon isExpanded={expanded} size={18}/>
             </ButtonExpand>
-            <Account>
-                <img src={avatar} />
+            <Account isExpanded={expanded}>
+                <img src={avatar} alt="user avatar" />
+                <span>userteste@email.com</span>
+                <button>
+                    <ExitIcon size={18}/>
+                </button>
             </Account>
         </SideMenu>
     );

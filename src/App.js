@@ -1,8 +1,7 @@
 import React from 'react';
-import Board from './components/board';
-import Header from './components/header';
 import GlobalStyle from './styles/globalStyles';
 import { BrowserRouter } from 'react-router-dom';
+import { AuthProvider } from './contexts/auth.context';
 import Routes from './routes';
 
 function App() {
@@ -10,7 +9,9 @@ function App() {
     <>
       <GlobalStyle />
       <BrowserRouter>
-        <Routes />
+        <AuthProvider>
+          <Routes />
+        </AuthProvider>
       </BrowserRouter>
     </>
   );

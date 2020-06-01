@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import AuthContext from '../../contexts/auth.context';
+
 import FormLogin from '../../components/forms/formLogin';
 import { Container, FormContainer } from '../styles';
 import { Link, useHistory } from 'react-router-dom';
 
 function SignInPage () {
   const history = useHistory();
+
+  const { loggedIn, user } = useContext(AuthContext);
+
+  console.log('login', user);
 
   return (
     <Container>

@@ -1,36 +1,49 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
 import Input from '../../inputs/input';
 import * as Yup from 'yup';
 import { Form } from '@unform/web';
+import AuthContext from '../../../contexts/auth.context';
 
 import {
   SubmitButton
 } from '../styles';
 
 function FormLogin () {
-    
+    const { userLogin } = useContext(AuthContext);
+
     const formLoginRef = useRef(null);
 
     async function handleSubmit(data, { reset }) {
-        console.log(formLoginRef.current);
+      try {
+        formLoginRef.current.setErrors({});
 
-        try {
-            formLoginRef.current.setErrors({});
+        const schema = Yup.object().shape({
+          email: Yup.string()
+            .email('Enter a valid email address')
+            .required('Email is required'),
+          password: Yup.string()
+            .min(4,'The password must be at least 8 characters long.')
+            .required('Password is required'),
+        });
 
-            const schema = Yup.object().shape({
-              email: Yup.string().email().required(),
-              password: Yup.string().min(6).required()
-            });
+        await schema.validate(data, {
+          abortEarly: false
+        });
 
-            await schema.validate(data, {
-              abortEarly: false
-            });
+        await userLogin(data);
 
-        } catch (err) {
-
-        }
-        
         reset();
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errorMessages = {};
+
+          err.inner.forEach(error => {
+            errorMessages[error.path] = error.message;
+          })
+
+          formLoginRef.current.setErrors(errorMessages);
+        }
+      }
     }
 
     return (

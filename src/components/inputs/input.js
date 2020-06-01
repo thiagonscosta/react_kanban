@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useField }  from '@unform/core';
 
 import { FormInput } from './styles';
+import InputErrorMessage from '../inputErrorMessage';
 
 function Input ({ name, label, placeholder, ...rest }) {
     const { fieldName, registerField, defaultValue, error } = useField(name);
@@ -23,7 +24,9 @@ function Input ({ name, label, placeholder, ...rest }) {
                 id={fieldName}
                 placeholder={placeholder}
                 {...rest}
+                error={error}
             />
+            {error && <InputErrorMessage message={error} /> }
         </>
     )
 }

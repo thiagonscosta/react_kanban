@@ -14,10 +14,6 @@ export const ColumnWrapper = styled.div`
   & + & {
     margin-left: 12px;
   }
-
-  /* & + div {
-    border-left: 1px solid rgba(0, 0, 0, 0.05);
-  } */
 `
 
 export const ColumnTitle = styled.div`

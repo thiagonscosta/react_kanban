@@ -12,34 +12,40 @@ function FormRegister () {
     const formRegisterRef = useRef(null);
 
     async function handleSubmit(data, { reset }) {
-        // console.log(formLoginRef.current);
+      try {
+        formRegisterRef.current.setErrors({});
 
-        try {
-            formRegisterRef.current.setErrors({});
+        const schema = Yup.object().shape({
+          email: Yup.string()
+            .email('Enter a valid email address')
+            .required('Email is required'),
+          password: Yup.string()
+            .min(4,'The password must be at least 8 characters long.')
+            .required('Password is required'),
+          name: Yup.string()
+            .required('The name must be at least 8 characters long.')
+        });
 
-            const schema = Yup.object().shape({
-                email: Yup.string().email().required(),
-                password: Yup.string().min(6).required()
-            });
+        await schema.validate(data, {
+          abortEarly: false
+        });
 
-            await schema.validate(data, {
-                abortEarly: false
-            });
-
-        } catch (err) {
-
-        }
-        
         reset();
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errorMessages = {};
+
+          err.inner.forEach(error => {
+            errorMessages[error.path] = error.message;
+          })
+
+          formRegisterRef.current.setErrors(errorMessages);
+        }
+      }
     }
 
     return (
       <Form ref={formRegisterRef} onSubmit={handleSubmit}>
-        <Input
-          name="name"
-          type="text"
-          placeholder="name"
-        />
         <Input
           name="email"
           type="email"
@@ -49,6 +55,11 @@ function FormRegister () {
           name="password"
           type="password"
           placeholder="password"
+        />
+        <Input
+          name="name"
+          type="text"
+          placeholder="name"
         />
         <SubmitButton type="submit">Sign Up</SubmitButton>
       </Form>

@@ -1,30 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import {
     ColumnWrapper,
     ColumnTitle,
     ColumnContent,
-    ButtonAddItem,
-    CloseButton
 } from './styles';
 
-import { MdControlPoint } from 'react-icons/md';
-import { MdClear } from 'react-icons/md';
-// import Modal from '../modal';
-import Modal from "react-modal";
 import Item from '../item';
-
-const customStyles = {
-  content: {
-    width: "40%",
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
 
 function Column(props) {
 

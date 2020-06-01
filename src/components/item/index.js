@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { BoardItem, Avatar } from './styles';
 import { MdEvent } from 'react-icons/md';

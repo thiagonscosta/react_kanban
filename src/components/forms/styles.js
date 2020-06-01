@@ -4,6 +4,7 @@ export const SubmitButton = styled.button`
     border: 0;
     width: 100%;
     padding: 10px 0;
+    margin-top: 20px;
     border-radius: 5px;
     background: #1976D2;
 

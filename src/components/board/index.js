@@ -4,8 +4,15 @@ import { initialBoardData } from '../../data/initial-data';
 import { BoardContainer } from './styles';
 import Column from '../column/index';
 
+import AuthContext from '../../contexts/auth.context';
+
 class Board extends Component {
+    static contextType = AuthContext;
     state = initialBoardData;
+
+    componentDidMount() {
+        console.log('loggedin', this.context.loggendIn);
+    }
     
     onDragEnd = (result) => {
         const {
@@ -22,7 +29,6 @@ class Board extends Component {
             return;
         }
 
-        console.log(destination)
         const columnStart = (this.state.columns)[source.droppableId];
         const columnFinish = (this.state.columns)[destination.droppableId];
 
